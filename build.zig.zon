@@ -1,0 +1,13 @@
+.{
+    .name = .isocline_zig,
+    .version = "1.0.9",
+    .dependencies = .{
+        .upstream = .{
+            .url = "git+https://github.com/daanx/isocline.git#c9310ae58941559d761fe5d2dd2713d245f18da6",
+            .hash = "N-V-__8AAEixEgAXfr814ZfI5ToJJcDh4u_UerReQaIatKJf",
+        },
+    },
+    .minimum_zig_version = "0.16.0-dev.197+1a5cf072a",
+    .paths = .{ "build.zig", "build.zig.zon", "README.md", "LICENSE" },
+    .fingerprint = 0xbb4bba2a253d3452,
+}
