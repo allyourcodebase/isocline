@@ -1,0 +1,36 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        zig-version: [master]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Zig
+        uses: mlugg/setup-zig@v2
+        with:
+          version: ${{ matrix.zig-version }}
+
+      - name: Check Formatting
+        if: runner.os != 'Windows'
+        run: zig fmt --ast-check --check .
+
+      - name: Build for Windows
+        run: zig build --summary all
+
+      - name: Build for Linux
+        run: zig build --summary all
