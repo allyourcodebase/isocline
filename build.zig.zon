@@ -1,5 +1,5 @@
 .{
-    .name = .isocline_zig,
+    .name = .isocline,
     .version = "1.0.9",
     .dependencies = .{
         .upstream = .{
@@ -9,5 +9,5 @@
     },
     .minimum_zig_version = "0.16.0-dev.197+1a5cf072a",
     .paths = .{ "build.zig", "build.zig.zon", "README.md", "LICENSE" },
-    .fingerprint = 0xbb4bba2a253d3452,
+    .fingerprint = 0xa06675b723318f28,
 }

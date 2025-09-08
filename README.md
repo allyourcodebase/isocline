@@ -9,7 +9,7 @@ As of the time of this writing, works in zig master (`0.16.0-dev.197+1a5cf072a`)
 First, update your `build.zig.zon`:
 
 ```
-zig fetch --save https://github.com/allyourcodebase/isocline.git
+zig fetch --save git+https://github.com/allyourcodebase/isocline.git
 ```
 
 Next, add this snippet to your `build.zig` script:
