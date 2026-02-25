@@ -6,20 +6,23 @@ pub fn build(b: *std.Build) void {
 
     const upstream = b.dependency("upstream", .{});
 
-    const lib = b.addLibrary(.{
-        .name = "isocline",
-        .linkage = .static,
-        .root_module = b.createModule(.{
-            .target = target,
-            .optimize = optimize,
-            .link_libc = true,
-        }),
+    const isocline_mod = b.createModule(.{
+        .target = target,
+        .optimize = optimize,
+        .link_libc = true,
     });
-    lib.addCSourceFile(.{
+
+    isocline_mod.addCSourceFile(.{
         .file = upstream.path("src/isocline.c"),
         .flags = &.{},
     });
-    lib.installHeader(upstream.path("include/isocline.h"), "isocline.h");
 
+    const lib = b.addLibrary(.{
+        .name = "isocline",
+        .linkage = .static,
+        .root_module = isocline_mod,
+    });
+
+    lib.installHeader(upstream.path("include/isocline.h"), "isocline.h");
     b.installArtifact(lib);
 }
